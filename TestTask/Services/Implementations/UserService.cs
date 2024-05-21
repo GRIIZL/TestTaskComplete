@@ -19,6 +19,7 @@ namespace TestTask.Services.Implementations
         {
             return _dbContext.Users.Where(user => user.Orders.Any(order => order.CreatedAt.Year == 2003 && order.Status == Enums.OrderStatus.Delivered))
                 .OrderByDescending(user => user.Orders.Max(order => order.Quantity * order.Price)).FirstAsync();
+                               .FirstAsync();
         }
 
         public Task<List<User>> GetUsers()
