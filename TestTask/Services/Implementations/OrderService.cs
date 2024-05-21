@@ -25,7 +25,6 @@ namespace TestTask.Services.Implementations
         public Task<List<Order>> GetOrders()
         {
             return _dbContext.Orders.Where(order => order.User.Status == UserStatus.Active).OrderBy(order => order.CreatedAt).ToListAsync();
-            //return _dbContext.Orders.Join(_dbContext.Users, order => order.UserId, user => user.Id, (order, user) => new {order, user}).Where(x => x.user.Status == UserStatus.Active).Select(x=>x.order).OrderBy(order =>order.CreatedAt).ToListAsync();
         }
     }
 }
